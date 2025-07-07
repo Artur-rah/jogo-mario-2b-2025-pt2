@@ -9,6 +9,7 @@ audioStart = new Audio("./sound/audio_theme.mp3");
 const gameOverSound = new Audio("./sound/audio_gameover.mp3");
 
 let gameStarted = false;
+let score = 0;
 
 const startGame = () => {
     gameStarted = true;
@@ -30,6 +31,13 @@ const jump = () => {
         mario.classList.remove("jump");
     }
     ,500);
+}
+
+const updateScore = () => {
+score += 1;
+scoreElement.textContent = score;
+const animationSpeed = 1.5/ (1 + score/500);
+pipe.style.animation = `pipe-animation ${animationSpeed}s infinite linear`;
 }
 
 const loop = setInterval(() => {
